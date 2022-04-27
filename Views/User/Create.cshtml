@@ -1,0 +1,106 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model AdminDemo.Models.UserMaster
+
+
+
+<form method-post asp-action="Create">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Add User</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="FullName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="DateOfBirth"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="DateOfBirth" class="form-control" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        @Html.Label("Roll Name")
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(x => x.RollId, new SelectList(ViewBag.RollList, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        @Html.Label("Department Name")
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(x => x.DeptId, new SelectList(ViewBag.DeptList, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="UserName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Password"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-40" value="Create" />
+                            @*  </div>
+
+                                <div class="col">*@
+                            <a asp-action="Index" class="btn btn-primary w-40">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i> &nbsp;  Back
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+@section scripts{
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

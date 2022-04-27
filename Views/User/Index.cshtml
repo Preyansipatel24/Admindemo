@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AdminDemo.Models.UserViewModel>
+
+<div class="container p-3">
+    <div class="row pt-4">
+
+        <div class="col-6 text-left">
+            <a asp-controller="User" asp-action="Create" class="btn btn-primary">
+                <i class="fa fa-plus"></i> &nbsp; Create New User
+            </a>
+        </div>
+    </div>
+</div>
+
+
+ @if (Model.Count() > 0)
+    {
+        <div>
+            <table id="parentdiv" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>
+                            FullName
+                        </th>
+                        <th>
+                           DateOfBirth
+                        </th>
+                        <th>
+                            RollName
+                        </th>
+                        <th>
+                            DepartmentName
+                        </th>
+                        <th>
+                            UserName
+                        </th>
+                        <th>
+                            Password
+                        </th>
+                       <th>
+                            Email
+                        </th>
+                        
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td width:"50%">@obj.FullName</td>
+                               <td width:"50%">@obj.DateOfBirth</td>
+                                  <td width:"50%">@obj.RollName</td>
+                                     <td width:"50%">@obj.DepartmentName</td>
+                                        <td width:"50%">@obj.UserName</td>
+                                           <td width:"50%">@obj.Password</td>
+                                            <td width:"50%">@obj.Email</td>
+                                             
+                                               
+                                               
+                            <td class="text-center">
+                                <div class="w-75 btn-group" role="group">
+                                
+                                    <a asp-controller="User" asp-route-Id="@obj.UserId" asp-action="Edit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-pen-to-square"></i> &nbsp;
+                                    </a>
+                                    <a asp-controller="User" asp-route-Id="@obj.UserId" asp-action="Delete" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash-can"></i> &nbsp;
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+       </div>
+
+    }
+
+    else
+    {
+        <p>No User data</p>
+    }

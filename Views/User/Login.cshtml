@@ -1,0 +1,95 @@
+﻿@model AdminDemo.Models.UserMaster
+@{
+    Layout = null;
+}
+
+<h1>Login</h1>
+<hr />
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #75B993;
+            height: 100vh;
+        }
+
+        #login .container #login-row #login-column #login-box {
+            margin-top: 120px;
+            max-width: 400px;
+            height: 350px;
+            border: 1px solid #9C9C9C;
+            background-color: #EAEAEA;
+        }
+
+            #login .container #login-row #login-column #login-box #login-form {
+                padding: 20px;
+            }
+
+                #login .container #login-row #login-column #login-box #login-form #register-link {
+                    margin-top: -85px;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="row" style="margin-right: 51px;
+    margin-left: 378px">
+        <div class="col-md-4">
+            <form asp-action="Login" asp-controller="User" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    @*  <a asp-controller="Registration"  asp-action="Create" class="btn btn-primary mx-2">
+                        Sign Up
+                        </a>*@
+                           <input type="submit" value="Login" class="btn btn-primary w-34" />
+                    @*<a asp-controller="User"  asp-action="Login" class="btn btn-primary mx-2">
+                        Login
+                        </a*@
+                  
+                </div>
+                <div>
+                    <a asp-controller="User" asp-action="ForgotPassword">
+                        Forgot Password??
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div style="color:red;">@ViewBag.message</div>
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+

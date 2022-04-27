@@ -1,0 +1,59 @@
+﻿@model AdminDemo.Models.ChangePasswordViewModel
+
+
+
+@*<div style="text-align: center; padding-top: 50px;">*@
+    <h2>Change Password</h2>
+    <hr />
+
+    <form method="post" asp-action="dashboard">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Password"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="NewPassword"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="NewPassword" class="form-control" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ConfirmPassword"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                  <input type="submit" formmethod="post" asp-controller="User"  asp-action="dashboard" value="Update" class="btn btn-primary mx-2" />
+               
+    
+                
+               @* <button type="submit" class="btn btn-primary">Update</button>*@
+            </div>
+        </div>
+    </form>
+
+@*</div>@Html.Raw(TempData["msg"])*@
+
+
+
+
+
+
